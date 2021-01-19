@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="puissance4.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <section class="page">
+        <div class="scoreBoard">
+              <h2 class="points pointsA" id="pointsA">0</h2>
+
+          <h1 class="joueur" id="joueurA"></h1>
+
+
+          <h1 class="joueur" id="joueurB"></h1>
+
+              <h2 class="points pointsB" id="pointsB">0</h2>
+          <h1 class="reset" id="reset">-RESET-</h1>
+        </div>
+
+        <div class="spawnRow">
+          <div class="spawnCell" id="spawnCell0" onclick="spawn(this)"></div>
+          <div class="spawnCell" id="spawnCell1" onclick="spawn(this)"></div>
+          <div class="spawnCell" id="spawnCell2" onclick="spawn(this)"></div>
+          <div class="spawnCell" id="spawnCell3" onclick="spawn(this)"></div>
+          <div class="spawnCell" id="spawnCell4" onclick="spawn(this)"></div>
+          <div class="spawnCell" id="spawnCell5" onclick="spawn(this)"></div>
+          <div class="spawnCell" id="spawnCell6" onclick="spawn(this)"></div>
+          <div class="blocker" id="blocker"></div>
+        </div>
+
+
+        <div class="boardContainer" id="boardContainer">
+          <div class="svg-container" id="svg-container">
+            <svg class="block-trou" id="block-trou" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 360 360">
+              <defs></defs>
+              <path class="trou"
+              d="M492.3,595.53H123.79V227H492.3Zm-184.25-326A141.74,141.74,0,1,0,449.78,
+              411.28,141.74,141.74,0,0,0,308.05,269.54Z"
+              transform="translate(-123.29 -226.52)"/>
+            </svg>
+          </div>
+
+
+        </div>
+
+      <div class="popUp" id="popUp">
+        <div class="prompter">
+            <h1 class="bienvenu">Puissance 4 Online</h1>
+            <h1 class="question">Comment s'appelle la
+              <span id="fillIn" id="fillIn"></span> personne à jouer?</h1>
+            <div class="userName" id="userName" contenteditable="true"></div>
+            <div class="confirmer" id="confirmer">Confirmer</div>
+        </div>
+      </div>
+
+
+
+  </section>
+  <script src="puissance4.js"></script>
+</body>
+</html>

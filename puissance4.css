@@ -1,0 +1,191 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: 0;
+  user-select: none;
+  font-family: 'Roboto', sans-serif;
+}
+
+.page{
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+
+
+
+.scoreBoard{
+  width: 750px;
+  height: 200px;
+  background-color: rgb(50, 97, 102);
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+}
+
+.joueur{
+  width: 40%;
+  display: grid;
+  place-items: center;
+  font-size: 50px;
+  color: white;
+}
+
+.points{
+  font-size: 130px;
+  color: white;
+  position: absolute;
+  top: 20%;
+}
+.pointsA{
+  left: 15%
+}
+.pointsB{
+  right: 15%
+}
+.reset{
+  width: 300px;
+  height: 100px;
+  color: orange;
+  font-size: 70px;
+  border: 1px solid white;
+  display: none;
+  place-items: center;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+
+.spawnRow{
+  width: 910px;
+  height: 130px;
+  border: 0px solid white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+}
+.spawnCell{
+  width: 130px;
+  height: 130px;
+  border: 0px solid red;
+  display: grid;
+  place-items: center;
+}
+.spawnCell:hover{
+  background: radial-gradient(circle,  white 44%, rgba(0,0,0,0) 69%);
+}
+.blocker{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: none;
+}
+.boardContainer{
+  width: 910px;
+  height: 780px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  z-index: 998;
+}
+.boardContainer > div{
+  width: 130px;
+  height: 130px;
+}
+.test{
+  width: 130px;
+  height: 130px;
+  border: 1px solid orange;
+}
+.block-trou, .trou{
+  fill: rgb(43, 66, 97);
+  stroke: rgb(43, 66, 97);
+}
+.trous{
+  width: 130px;
+  height: 130px;
+  fill: white;
+}
+
+
+.pièceA{
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  background: radial-gradient(circle, rgba(212,185,63,1) 49%, transparent 50%);
+}
+.pièceB{
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  background: radial-gradient(circle, rgba(190,73,1,1) 49%, transparent 50%);
+}
+.popUp{
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 29, 43, 0.43);
+  position: absolute;
+  display: none;
+  place-items: center;
+  z-index: 999;
+}
+
+.prompter{
+  width: 1000px;
+  height: 600px;
+  border-radius: 30px;
+  background-color: rgb(31, 21, 9);
+  border: 10px solid rgb(176, 147, 114);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.bienvenu{
+  font-size: 100px;
+  margin: 40px;
+  color: rgb(176, 147, 114);
+}
+.question{
+   color: white;
+   font-size: 35px;
+   margin: 50px;
+}
+.userName{
+  width: 500px;
+  height: 100px;
+  font-size: 50px;
+  color: rgb(31, 21, 9);
+  background-color: rgb(176, 147, 114);
+  display: grid;
+  place-items: center;
+}
+.confirmer{
+  width: 300px;
+  height: 50px;
+  color: white;
+  font-size: 35px;
+  background-color: rgb(29, 47, 35);
+  display: grid;
+  place-items: center;
+  margin: 35px;
+}
+
+.confirmer:active{
+  width: 296px;
+  height: 46px;
+  border: 2px solid transparent;
+  background-color: rgb(40, 64, 48);
+}
