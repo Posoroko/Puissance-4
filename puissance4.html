@@ -3,65 +3,137 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="puissance4.css">
+  <link rel="stylesheet" href="loader.css">
+  <link rel="stylesheet" href="prompter.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet"> 
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
 <body>
+
+
+
+
+ 
+  
+
+  
+
+
   <section class="page">
-        <div class="scoreBoard">
-              <h2 class="points pointsA" id="pointsA">0</h2>
-
-          <h1 class="joueur" id="joueurA"></h1>
 
 
-          <h1 class="joueur" id="joueurB"></h1>
 
-              <h2 class="points pointsB" id="pointsB">0</h2>
-          <h1 class="reset" id="reset">-RESET-</h1>
+          
+
+
+        <div class="gameSpace">
+
+              <div class="spawnCell spawnCell0" id="spawnCell0" onclick="spawn(this)"></div>
+              <div class="spawnCell spawnCell1" id="spawnCell1" onclick="spawn(this)"></div>
+              <div class="spawnCell spawnCell2" id="spawnCell2" onclick="spawn(this)"></div>
+              <div class="spawnCell spawnCell3" id="spawnCell3" onclick="spawn(this)"></div>
+              <div class="spawnCell spawnCell4" id="spawnCell4" onclick="spawn(this)"></div>
+              <div class="spawnCell spawnCell5" id="spawnCell5" onclick="spawn(this)"></div>
+              <div class="spawnCell spawnCell6" id="spawnCell6" onclick="spawn(this)"></div>
+
+              <div class="boardPlayer boardPlayerA">
+                <h1 class="nomJoueur nomJoueurA"></h1>
+                <div class="pièces pièceA"></div>
+                <h2 class="points pointsA">0</h2>
+              </div>
+
+              <div class="boardPlayer boardPlayerB">
+                <div class="pièces pièceB"></div>
+                <h1 class="nomJoueur nomJoueurB"></h1>
+                <h2 class="points pointsB">0</h2>
+              </div>
+            
+              <svg class="boardSVG" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" 
+            viewBox="0 0 596.28 511.24">
+            
+            <path class="grille" d="M595.28,510.24H0V0H595.28ZM212.6,177.17A35.43,35.43,0,1,0,
+            248,212.6,35.43,35.43,0,0,0,212.6,177.17Zm0,255.11A35.44,35.44,0,1,0,248,467.72,
+            35.44,35.44,0,0,0,212.6,432.28Zm0-425.19A35.43,35.43,0,1,0,248,42.52,35.43,35.43,
+            0,0,0,212.6,7.09Zm0,340.15A35.44,35.44,0,1,0,248,382.68,35.44,35.44,0,0,0,212.6,
+            347.24Zm0-255.11A35.43,35.43,0,1,0,248,127.56,35.43,35.43,0,0,0,212.6,92.13Zm0,
+            170.07A35.44,35.44,0,1,0,248,297.64,35.44,35.44,0,0,0,212.6,262.2Zm170.08-85a35.43,
+            35.43,0,1,0,35.43,35.43A35.44,35.44,0,0,0,382.68,177.17Zm0,255.11a35.44,35.44,0,1,0
+            ,35.43,35.44A35.44,35.44,0,0,0,382.68,432.28Zm0-425.19a35.43,35.43,0,1,0,35.43,
+            35.43A35.44,35.44,0,0,0,382.68,7.09Zm0,340.15a35.44,35.44,0,1,0,35.43,35.44A35.44,
+            35.44,0,0,0,382.68,347.24Zm0-255.11a35.43,35.43,0,1,0,35.43,35.43A35.44,35.44,0,0,0,
+            382.68,92.13Zm0,170.07a35.44,35.44,0,1,0,35.43,35.44A35.44,35.44,0,0,0,382.68,
+            262.2Zm-340.16-85A35.43,35.43,0,1,0,78,212.6,35.43,35.43,0,0,0,42.52,177.17Zm0,
+            255.11A35.44,35.44,0,1,0,78,467.72,35.44,35.44,0,0,0,42.52,432.28Zm0-425.19A35.43,
+            35.43,0,1,0,78,42.52,35.43,35.43,0,0,0,42.52,7.09Zm0,340.15A35.44,35.44,0,1,0,78,
+            382.68,35.44,35.44,0,0,0,42.52,347.24Zm0-255.11A35.43,35.43,0,1,0,78,127.56,35.43,
+            35.43,0,0,0,42.52,92.13Zm0,170.07A35.44,35.44,0,1,0,78,297.64,35.44,35.44,0,0,0,
+            42.52,262.2Zm255.12-85a35.43,35.43,0,1,0,35.43,35.43A35.44,35.44,0,0,0,297.64,
+            177.17Zm0,255.11a35.44,35.44,0,1,0,35.43,35.44A35.44,35.44,0,0,0,297.64,
+            432.28Zm0-425.19a35.43,35.43,0,1,0,35.43,35.43A35.44,35.44,0,0,0,297.64,7.09Zm0,
+            340.15a35.44,35.44,0,1,0,35.43,35.44A35.44,35.44,0,0,0,297.64,347.24Zm0-255.11a35.43,
+            35.43,0,1,0,35.43,35.43A35.44,35.44,0,0,0,297.64,92.13Zm0,170.07a35.44,35.44,0,1,0,
+            35.43,35.44A35.44,35.44,0,0,0,297.64,262.2Zm-170.08-85A35.43,35.43,0,1,0,163,212.6,
+            35.43,35.43,0,0,0,127.56,177.17Zm0,255.11A35.44,35.44,0,1,0,163,467.72,35.44,35.44,
+            0,0,0,127.56,432.28Zm0-425.19A35.43,35.43,0,1,0,163,42.52,35.43,35.43,0,0,0,127.56,
+            7.09Zm0,340.15A35.44,35.44,0,1,0,163,382.68,35.44,35.44,0,0,0,127.56,
+            347.24Zm0-255.11A35.43,35.43,0,1,0,163,127.56,35.43,35.43,0,0,0,127.56,92.13Zm0,
+            170.07A35.44,35.44,0,1,0,163,297.64,35.44,35.44,0,0,0,127.56,262.2Zm340.16-85a35.43,
+            35.43,0,1,0,35.43,35.43A35.44,35.44,0,0,0,467.72,177.17Zm0,255.11a35.44,35.44,0,1,0,
+            35.43,35.44A35.44,35.44,0,0,0,467.72,432.28Zm0-425.19a35.43,35.43,0,1,0,35.43,
+            35.43A35.44,35.44,0,0,0,467.72,7.09Zm0,340.15a35.44,35.44,0,1,0,35.43,35.44A35.44,
+            35.44,0,0,0,467.72,347.24Zm0-255.11a35.43,35.43,0,1,0,35.43,35.43A35.44,35.44,0,0,0,
+            467.72,92.13Zm0,170.07a35.44,35.44,0,1,0,35.43,35.44A35.44,35.44,0,0,0,467.72,
+            262.2Zm85-85a35.43,35.43,0,1,0,35.43,35.43A35.44,35.44,0,0,0,552.76,177.17Zm0,
+            255.11a35.44,35.44,0,1,0,35.43,35.44A35.44,35.44,0,0,0,552.76,432.28Zm0-425.19a35.43,
+            35.43,0,1,0,35.43,35.43A35.44,35.44,0,0,0,552.76,7.09Zm0,340.15a35.44,35.44,0,1,0,
+            35.43,35.44A35.44,35.44,0,0,0,552.76,347.24Zm0-255.11a35.43,35.43,0,1,0,35.43,
+            35.43A35.44,35.44,0,0,0,552.76,92.13Zm0,170.07a35.44,35.44,0,1,0,35.43,35.44A35.44,
+            35.44,0,0,0,552.76,262.2Z" transform="translate(0.5 0.5)"/>
+             </svg>
+          
         </div>
-
-        <div class="spawnRow">
-          <div class="spawnCell" id="spawnCell0" onclick="spawn(this)"></div>
-          <div class="spawnCell" id="spawnCell1" onclick="spawn(this)"></div>
-          <div class="spawnCell" id="spawnCell2" onclick="spawn(this)"></div>
-          <div class="spawnCell" id="spawnCell3" onclick="spawn(this)"></div>
-          <div class="spawnCell" id="spawnCell4" onclick="spawn(this)"></div>
-          <div class="spawnCell" id="spawnCell5" onclick="spawn(this)"></div>
-          <div class="spawnCell" id="spawnCell6" onclick="spawn(this)"></div>
-          <div class="blocker" id="blocker"></div>
-        </div>
-
-
-        <div class="boardContainer" id="boardContainer">
-          <div class="svg-container" id="svg-container">
-            <svg class="block-trou" id="block-trou" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 360 360">
-              <defs></defs>
-              <path class="trou"
-              d="M492.3,595.53H123.79V227H492.3Zm-184.25-326A141.74,141.74,0,1,0,449.78,
-              411.28,141.74,141.74,0,0,0,308.05,269.54Z"
-              transform="translate(-123.29 -226.52)"/>
-            </svg>
+    
+        <section class="prompter">
+          <div class="promptContainer">
+            <h1 class="promptTitle"> 
+              Nom du 
+              <span class="joueurInput"></span>
+              :
+            </h1>
+            <input class="promptInput" type="text" input autocomplete="off" 
+            class="userInfo" maxlength = 6 autofocus = true>
+            <button class="confirmer">Valider</button>
           </div>
+        </section>
 
-
-        </div>
-
-      <div class="popUp" id="popUp">
-        <div class="prompter">
-            <h1 class="bienvenu">Puissance 4 Online</h1>
-            <h1 class="question">Comment s'appelle la
-              <span id="fillIn" id="fillIn"></span> personne à jouer?</h1>
-            <div class="userName" id="userName" contenteditable="true"></div>
-            <div class="confirmer" id="confirmer">Confirmer</div>
-        </div>
-      </div>
+        <section class="loader">
+          <h1 class="titre">
+            Puissance 4
+            <button class="play">Commencer</button>
+        </h1>
+      
+      
+       
 
 
 
+       
+       
   </section>
-  <script src="puissance4.js"></script>
+  <div class="pièces pièceA" id="pièceDuPointeur" ></div>  
+  <div class="blocker" id="blocker"></div>
+  <section class="résultats">
+    <h1>C'est <span class="gagnant"></span> qui a gagné. <span class="perdant"></span>, toi, tu as perdu...</h1>
+    <button class="reset">Une autre?</button>
+  </section>
+</section>
+  
+  <script src="puissance4.js" defer></script>
+  <script src="prompter.js" defer></script>
+  <script src="loader.js" defer></script>
+  <script src="largeur adaptative.js"></script>
 </body>
 </html>

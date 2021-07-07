@@ -1,10 +1,7 @@
-var popUp_div = document.getElementById('popUp');
-var userName_div = document.getElementById('userName')
-var fillIn_span = document.getElementById('fillIn');
-var confirmer_div = document.getElementById('confirmer');
-var nameCount = false;
+const loader_section = document.querySelector('.loader');
+const titre_h1 = document.querySelector('.titre');
 
-confirmer_div.addEventListener('click', register);
+var nameCount = false;
 
 var spawnCell0_div =  document.getElementById('spawnCell0');
 var spawnCell1_div =  document.getElementById('spawnCell1');
@@ -14,15 +11,28 @@ var spawnCell4_div =  document.getElementById('spawnCell4');
 var spawnCell5_div =  document.getElementById('spawnCell5');
 var spawnCell6_div =  document.getElementById('spawnCell6');
 var blocker_div = document.getElementById('blocker');
+var pièces_div = document.querySelector('.pièces');
+const pointer_div = document.getElementById('pièceDuPointeur');
 
-var joueurA_h1 = document.getElementById('joueurA');
-var joueurB_h1 = document.getElementById('joueurB');
-var pointsA_h2 = document.getElementById('pointsA');
-var pointsB_h2 = document.getElementById('pointsB');
+const résultats_section = document.querySelector('.résultats');
+const gagnant_span = document.querySelector('.gagnant');
+const perdant_span = document.querySelector('.perdant');
+const reset_button = document.querySelector('.reset');
+
+var nomJoueurA_h1 = document.querySelector('.nomJoueurA');
+var nomJoueurB_h1 = document.querySelector('.nomJoueurB');
+var pointsA_h2 = document.querySelector('.pointsA');
+var pointsB_h2 = document.querySelector('.pointsB');
 var reset_h1 = document.getElementById('reset');
+
+let playerNames = {   //mise en mémoire du noms des joueurs
+  joueurA: '', 
+  joueurB: ''
+};
 var joueurA;
 var joueurB;
-reset_h1.addEventListener('click', reset);
+
+reset_button.addEventListener('click', reset);
 
 function reset()
 {
@@ -38,11 +48,12 @@ function reset()
       for(k = comptePièce - 1; k > -1; k --)
       {
         var id = '#pièce' + k;
-        var elem = document.querySelector(id);
+        var elem = document.querySelector(id);  //supprimer les pièces ajoutées
         elem.parentNode.removeChild(elem);
       }
-      comptePièce = 0;
+      comptePièce = 0;    
       blocker_div.style.display = 'none';
+      fade(résultats_section, 1, 0);
 
 }
 
@@ -68,21 +79,22 @@ function spawn(element)
 
   if(compteurParColonne[numColonne] > -1)                             //vérifier s'il reste une place libre dans la colonne ( 0 = 1 place libre)
   {
+    //pointer_div.style.display = 'none';
+    //setTimeout(function(){pointer_div.style.display = 'flex'}, 100);
     blocker_div.style.display = 'flex';
+    console.log(blocker_div.style.display);
     const newPiece = document.createElement('div');                   //créer nouvelle pièce
     newPiece.id  = 'pièce' + comptePièce;                             // ajouter id pour nouvelle pièce
     if(joueur)
     {
-      newPiece.classList.add('pièces', 'pièceA');                               // ajouter class  IL FAUDRAIT AJOUTER UN TIMEOUT() POUR QUE LA COULEUR CHANGE APRES L4ANIMATUION DE LA CHUTE
-      joueurA_h1.style.color = 'white';
-      joueurB_h1.style.color = 'orange';
+      pointer_div.classList.replace('pièceA', 'pièceB');
+      newPiece.classList.add('pièces', 'pièceA');                               
       tableau[compteurParColonne[numColonne]][numColonne] = 1;
     }
     if(!joueur)
     {
+      pointer_div.classList.replace('pièceB', 'pièceA');
       newPiece.classList.add('pièces', 'pièceB');                               // ajouter class
-      joueurA_h1.style.color = 'orange';
-      joueurB_h1.style.color = 'white';
       tableau[compteurParColonne[numColonne]][numColonne] = 2;
     }
     element.appendChild(newPiece);                                    //ajouter nouvellepièce au Document
@@ -95,14 +107,14 @@ function spawn(element)
 }
 
 function chuteDePièce(colonne, id)
-{                      //colonne == no de la colonne, class = id de la nouvelle pièce
-
-  var chute = ((compteurParColonne[colonne] + 1) * 130) + 'px';
+{                                           //colonne == no de la colonne, class = id de la nouvelle pièce
+  var chute = ((compteurParColonne[colonne] + 1) * 100) + '%';
+  console.log(chute);
   document.getElementById(id).animate([
       {transform: 'translateY(0px)'},
       {transform: `translateY(${chute})`}
   ],
-    { duration: 350,
+    { duration: 400,
       iteration: 1,
       easing: 'cubic-bezier(.96,-0.01,.93,.66)',
       fill: 'forwards'
@@ -268,22 +280,27 @@ function afficherGagnant(a, b)
   {
     comptePointsA ++;
     pointsA_h2.innerHTML = comptePointsA;
-    alert(joueurA + ' a gagné!!!');
-    reset_h1.style.display = 'grid';
+    insérerNoms(playerNames.joueurA, playerNames.joueurB);
+    résultats_section.style.display = 'flex';
+    fade(résultats_section, 0, 1);
+    
     return true;
   }
   else if(b == 4)
   {
     comptePointsB ++;
     pointsB_h2.innerHTML = comptePointsB;
-    alert(joueurB + ' a gagné!!!');
-    reset_h1.style.display = 'grid';
+    insérerNoms(playerNames.joueurB, playerNames.joueurA);
+    résultats_section.style.display = 'flex';
+    fade(résultats_section, 0, 1);
+    
     return true;
   }
   else
   {
     return false;
   }
+  
 
 }
     if(!gagné)
@@ -292,44 +309,36 @@ function afficherGagnant(a, b)
     }
 }
 
-function register()
+window.addEventListener('mousemove', follow);
+function follow(e)
 {
-  if(nameCount)
-  {
-    if(userName_div.innerHTLML.length > 0 && input_div.innerHTLML.length < 9)
-    {
-      joueurA = input_div.innerHTLML
-    }
-  }
-  else {
-    {
-      if(userName_div.innerHTLML.length > 0 && input_div.innerHTLML.length < 9)
-      {
-        joueurA = input_div.innerHTLML
-      }
-    }
-  }
 
-
+   var x = e.pageX;
+   var y = e.pageY;
+   function retard()
+   {
+    pointer_div.style.left = x  + 'px';
+    pointer_div.style.top = y + 'px';
+   }
+ 
+     setTimeout(retard, 50);
+   
+   
 }
-
-function loadGame()
+function fade(x, a, b)
 {
-  var board = document.getElementById('boardContainer');
-  var item = document.getElementById('svg-container');
-
-  for(i = 0; i < 41; i ++)
+  x.animate([
+    {opacity: a},
+    {opacity: b}
+  ],
   {
-    var clone = item.cloneNode(true);
-    board.appendChild(clone);
-  }
-  //popUp_div.style.display = 'grid';
-  joueurA = prompt("Nom du joueur A:");
-  joueurA_h1.innerHTML = joueurA;
-  joueurB = prompt("Nom du joueur B:");
-  joueurB_h1.innerHTML = joueurB;
-
-  joueurA_h1.style.color = 'orange';
-  joueurB_h1.style.color = 'white';
+    duration: 500,
+    easing: 'ease-out',
+    fill: 'forwards'
+  });
 }
-loadGame();
+function insérerNoms(gagnant, perdant)
+{
+  gagnant_span.innerHTML = gagnant;
+  perdant_span.innerHTML = perdant;
+}
